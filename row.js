@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Switch } from 'react-native';
+import { View, Text, StyleSheet, Switch, TouchableOpacity } from 'react-native';
 
 class Row extends Component {
     render() {
@@ -17,6 +17,9 @@ class Row extends Component {
                         {this.props.text}
                     </Text>
                 </View>
+                <TouchableOpacity onPress={this.props.onRemove}>
+                    <Text style={styles.destroy}>X</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -25,6 +28,7 @@ class Row extends Component {
 Row.propTypes = {
     complete: React.PropTypes.bool.isRequired,
     onComplete: React.PropTypes.func.isRequired,
+    onRemove: React.PropTypes.func.isRequired,
     text: React.PropTypes.string.isRequired
 };
 
@@ -45,6 +49,10 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 24,
         color: '#4D4D4D'
+    },
+    destroy: {
+        fontSize: 20,
+        color: '#CC9A9A'
     }
 });
 
