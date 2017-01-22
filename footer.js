@@ -27,6 +27,9 @@ class Footer extends Component {
             <Text>Completed</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity onPress={this.props.onClearComplete}>
+          <Text>Clear Completed</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -35,7 +38,8 @@ class Footer extends Component {
 Footer.propTypes = {
   count: React.PropTypes.number.isRequired,
   filter: React.PropTypes.oneOf(['ALL', 'ACTIVE', 'COMPLETED']).isRequired,
-  onFilter: React.PropTypes.func.isRequired
+  onFilter: React.PropTypes.func.isRequired,
+  onClearComplete: React.PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
