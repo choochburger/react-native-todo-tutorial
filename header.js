@@ -1,23 +1,33 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 class Header extends Component {
   render() {
     return (
       <View style={styles.header}>
+        <TouchableOpacity onPress={this.props.onToggleAllComplete}>
+          <Text style={styles.toggleIcon}>{String.fromCharCode(10003)}</Text>
+        </TouchableOpacity>
         <TextInput
-        value={this.props.value}
-        onChangeText={this.props.onChange}
-        onSubmitEditing={this.props.onAddItem}
-        placeholder="What needs to be done?"
-        blurOnSubmit={false}
-        returnKeyType="done"
-        style={styles.input}
+          value={this.props.value}
+          onChangeText={this.props.onChange}
+          onSubmitEditing={this.props.onAddItem}
+          placeholder="What needs to be done?"
+          blurOnSubmit={false}
+            returnKeyType="done"
+          style={styles.input}
         />
       </View>
-      );
+    );
   }
 }
+
+Header.propTypes = {
+  onToggleAllComplete: React.PropTypes.func.isRequired,
+  value: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func.isRequired,
+  onAddItem: React.PropTypes.func.isRequired
+};
 
 const styles = StyleSheet.create({
   header: {
@@ -26,9 +36,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center'
   },
+  toggleIcon: {
+    fontSize: 30,
+    color: "#CCC"
+  },
   input: {
     flex: 1,
-    height: 50
+    height: 50,
+    marginLeft: 16
   }
 })
 
