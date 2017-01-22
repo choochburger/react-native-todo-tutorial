@@ -6,6 +6,7 @@ class Footer extends Component {
     const { filter } = this.props;
     return (
       <View style={styles.container}>
+        <Text>{this.props.count} count</Text>
         <View style={styles.filters}>
           <TouchableOpacity
             style={[styles.filter, filter === 'ALL' && styles.selected]}
@@ -32,6 +33,7 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
+  count: React.PropTypes.number.isRequired,
   filter: React.PropTypes.oneOf(['ALL', 'ACTIVE', 'COMPLETED']).isRequired,
   onFilter: React.PropTypes.func.isRequired
 };
